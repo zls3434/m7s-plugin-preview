@@ -2,7 +2,7 @@ module github.com/zls3434/m7s-plugin-preview/v4
 
 go 1.18
 
-require github.com/zls3434/m7s-engine/v4 v4.15.2
+require github.com/zls3434/m7s-engine/v4 v4.15.3
 
 require (
 	github.com/bluenviron/gortsplib/v4 v4.6.2 // indirect
