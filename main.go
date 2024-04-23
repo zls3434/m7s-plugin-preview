@@ -8,8 +8,8 @@ import (
 	"path/filepath"
 	"strings"
 
-	. "m7s.live/engine/v4"
-	"m7s.live/engine/v4/config"
+	. "github.com/zls3434/m7s-engine/v4"
+	"github.com/zls3434/m7s-engine/v4/config"
 )
 
 //go:embed ui
