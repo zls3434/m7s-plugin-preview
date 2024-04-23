@@ -8,7 +8,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	. "github.com/zls3434/m7s-engine/v4"
+	"github.com/zls3434/m7s-engine/v4"
 	"github.com/zls3434/m7s-engine/v4/config"
 )
 
@@ -22,16 +22,16 @@ func (p *PreviewConfig) OnEvent(event any) {
 
 }
 
-var _ = InstallPlugin(&PreviewConfig{})
+var _ = engine.InstallPlugin(&PreviewConfig{})
 
 func (p *PreviewConfig) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Path == "/" {
 		s := "<h1><h1><h2>Live Streams 引擎中正在发布的流</h2>"
-		Streams.Range(func(streamPath string, stream *Stream) {
+		engine.Streams.Range(func(streamPath string, stream *engine.Stream) {
 			s += fmt.Sprintf("<a href='%s'>%s</a> [ %s ]<br>", streamPath, streamPath, stream.GetType())
 		})
 		s += "<h2>pull stream on subscribe 订阅时才会触发拉流的流</h2>"
-		for name, p := range Plugins {
+		for name, p := range engine.Plugins {
 			if pullcfg, ok := p.Config.(config.PullConfig); ok {
 				pullconf := pullcfg.GetPullConfig()
 				pullconf.PullOnSubLocker.RLock()
